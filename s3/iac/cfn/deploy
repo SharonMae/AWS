@@ -2,9 +2,10 @@
 
 echo "== deploy s3 bucket via CFN"
 
-STACK_NAME="cfn-s3-simple"
+STACK_NAME="shiny-stack-og"
 
 aws cloudformation deploy \
 --template-file template.yaml \
---region ca-central-1 \
+--no-execute-changeset \
+--region us-west-2 \
 --stack-name $STACK_NAME
