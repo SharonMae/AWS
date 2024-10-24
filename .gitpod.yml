@@ -39,3 +39,6 @@ tasks:
   # https://docs.aws.amazon.com/sdk-for-ruby/v3/api/
   # https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Client.html
   # https://github.com/aws/aws-sdk-ruby
+  - name: cfn-cloudformation
+    before: |
+  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html
