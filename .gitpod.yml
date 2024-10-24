@@ -30,3 +30,12 @@ tasks:
           unzip awscliv2.zip
           sudo ./aws/install
           cd $THEIA_WORKSPACE_ROOT
+  - name: sdk-java
+    before: |
+  # https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup-project-maven.html
+  # https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+  - name: sdk-ruby
+    before: |
+  # https://docs.aws.amazon.com/sdk-for-ruby/v3/api/
+  # https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Client.html
+  # https://github.com/aws/aws-sdk-ruby
