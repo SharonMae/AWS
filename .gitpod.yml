@@ -3,7 +3,7 @@ tasks:
   - name: cdk
     before: |
           npm i -g aws-cdk
-        # cdk bootstrap
+        #  cdk bootstrap
         #  cdk synth
         #  cdk deploy
         #  cdk destroy
