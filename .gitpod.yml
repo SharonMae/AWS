@@ -3,13 +3,13 @@ tasks:
   - name: cdk
     before: |
           npm i -g aws-cdk
-          cdk bootstrap
-          cdk synth
-          cdk deploy
-          cdk destroy
+        # cdk bootstrap
+        #  cdk synth
+        #  cdk deploy
+        #  cdk destroy
   - name: terraform
     before: |
-          source bin/terraform_cli_install.sh
+          ./bin/terraform_cli_install.sh
   - name: utils 
     before: |
           sudo apt-get install tree
@@ -18,28 +18,12 @@ tasks:
   # https://docs.aws.amazon.com/powershell/latest/reference/
   - name: powershell
     before: |
-      sudo apt-get update
-      sudo apt-get install -y wget apt-transport-https software-properties-common
-      source /etc/os-release
-      wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb
-      sudo dpkg -i packages-microsoft-prod.deb
-      rm packages-microsoft-prod.deb
-      sudo apt-get update
-      sudo apt-get install -y powershell
-      # pwsh
-      # Install-Module -Name AWS.Tools.Installer
-      # Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-  # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html 
-  # https://techcommunity.microsoft.com/t5/itops-talk-blog/autocomplete-in-powershell/ba-p/2604524
+          ./bin/powershell_cli_install.sh
   - name: aws-cli
     env:
           AWS_CLI_AUTO_PROMPT: on-partial
     before: |
-          cd /workspace
-          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip awscliv2.zip
-          sudo ./aws/install
-          cd $THEIA_WORKSPACE_ROOT
+          ./bin/aws_cli_install.sh
   - name: sdk-java
     before: |
   # https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup-project-maven.html
@@ -52,3 +36,8 @@ tasks:
   - name: cfn-cloudformation
     before: |
   # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html
+
+
+
+
+  # chmod u+x ./bin/*
