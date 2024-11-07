@@ -5,6 +5,10 @@ Parameters:
     Type: String
     Default: "sts-shiny-og-4050"
 Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref BucketName
   StsRole:
     Type: 'AWS::IAM::Role'
     Properties:
@@ -26,5 +30,5 @@ Resources:
               - Effect: Allow
                 Action: '*'
                 Resource: [
-                  !Sub "arn:aws:s3:::${BucketName}"
+                  Fn::Sub: "arn:aws:s3:::${BucketName}"
                 ]
