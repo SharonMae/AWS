@@ -5,7 +5,7 @@
 VPC_ID=$(aws ec2 create-vpc \
 --cidr-block "188.19.0.0/16" \
 --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=my-shiny-vpc-darling}]' \
---region us-west-2 \
+--region us-west-1 \
 --query Vpc.VpcId \
 --output text)
 
@@ -15,7 +15,8 @@ echo $VPC_ID
 
 IGW_ID=$(aws ec2 create-internet-gateway \
 --query InternetGateway.InternetGatewayId \
---output text)
+--output text
+)
 
 echo "IGW_ID: $IGW_ID"
 
