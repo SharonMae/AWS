@@ -11,6 +11,11 @@ VPC_ID=$(aws ec2 create-vpc \
 
 echo $VPC_ID
 
+# turn on DNS Hostnames
+
+aws ec2 modify-vpc-attribute --vpc-id $VPC_ID --enable-dns-hostnames "{\"Value\":true}"
+
+
 # create an IGW
 
 IGW_ID=$(aws ec2 create-internet-gateway \
@@ -34,6 +39,10 @@ SUBNET_ID=$(aws ec2 create-subnet \
 
 echo "SUBNET_ID: $SUBNET_ID"
 
+# auto assign IPv4 address 
+
+aws ec2 modify-subnet-attribute --subnet-id $SUBNET_ID --map-public-ip-on-launch
+
 # explicitly associate subnet
 
 RT_ID=$(aws ec2 describe-route-tables \
@@ -48,3 +57,8 @@ aws ec2 associate-route-table \
 --subnet-id $SUBNET_ID
 
 # add a route for our RT (Route Table) to our IGW
+
+aws ec2 create-route \
+--route-table-id $RT_ID \
+--destination-cidr-block 0.0.0.0/0 \
+--gateway-id $IGW_ID
