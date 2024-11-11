@@ -54,8 +54,7 @@ aws ec2 disassociate-route-table --association-id $ASSOC_ID
 aws ec2 delete-subnet --subnet-id $SUBNET_ID
 
 # delete a RT (Route Table)
-
-aws ec2 delete-route-table --route-table-id $RT_ID
+# aws ec2 delete-route-table --route-table-id $RT_ID
 
 # delete a VPC
 
