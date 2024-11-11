@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# check if the argument is not present
+if [ -z "$1" ]; then
+  echo "Argument is not present."
+else
+  export VPC_ID="$1"
+fi
+
+# detach the IGW
+
+# delete vpc
+
+aws ec2 delete-vpc --vpc-id $VPC_ID
