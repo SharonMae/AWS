@@ -8,7 +8,7 @@ Resources:
   S3Bucket:
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: !Ref BucketName
+      BucketName: Fn::Sub:'${BucketName}'
   StsRole:
     Type: 'AWS::IAM::Role'
     Properties:
@@ -17,8 +17,9 @@ Resources:
         Statement:
           - Effect: Allow
             Principal:
-              Service:
-                - s3.amazonaws.com
+            AWS: "arn:aws:iam::976193260990:user/sts-machine-user"
+              # Service:
+                # - s3.amazonaws.com
             Action:
               - 'sts:AssumeRole'
       Path: /

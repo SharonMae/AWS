@@ -46,3 +46,17 @@ aws s3 ls --profile sts
 We need to create a role that will access a new resource 
 
 # Use new user credentials and assume role 
+
+```sh
+aws iam put-user-policy \
+--user-name sts-machine-user \
+--policy-name StsAssumePolicy \
+--policy-document file://policy.json \
+```
+
+```sh
+aws sts assume-role \
+--role-arn \
+--role-session-name \
+--profile sts
+```
