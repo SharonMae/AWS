@@ -20,9 +20,29 @@ Parameters:
     Description: Subnet ID for the EC2 instance
 
 Resources:
+  EC2InstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  EC2InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref EC2InstanceRole
+
   MyEC2Instance: 
     Type: AWS::EC2::Instance
     Properties: 
+      IamInstanceProfile: !Ref EC2InstanceProfile
       InstanceType: !Ref InstanceType
       ImageId: !Ref ImageID    
       SubnetId: !Ref SubnetId
@@ -42,7 +62,6 @@ Resources:
         - IpProtocol: -1
           FromPort: -1
           ToPort: -1
-          CidrIpv6: ::/0           # Allows inbound traffic from any IPv6 address
       SecurityGroupEgress:
         - IpProtocol: -1           # Allows all outbound protocols
           FromPort: -1
@@ -51,4 +70,4 @@ Resources:
         - IpProtocol: -1
           FromPort: -1
           ToPort: -1
-          CidrIpv6: ::/0           # Allows outbound traffic to any IPv6 address
+
