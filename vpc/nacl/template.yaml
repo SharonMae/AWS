@@ -47,27 +47,27 @@ Resources:
       ImageId: !Ref ImageID    
       SubnetId: !Ref SubnetId
       SecurityGroupIds: 
-        - !Ref SG
-
+        - !GetAtt SG.GroupId
+       UserData: 
+        Fn::Base64: |
+          #!/bin/bash
+          sudo yum update -y
+          sudo yum install -y httpd
+          sudo systemctl start httpd
+          sudo systemctl enable httpd
   SG:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Allow all traffic (for testing purposes)
+      GroupDescription: Allow http to client host
       VpcId: !Ref VpcID
       SecurityGroupIngress:
         - IpProtocol: -1           # Allows all inbound protocols
           FromPort: -1
           ToPort: -1
           CidrIp: 0.0.0.0/0        # Allows inbound traffic from any IPv4 address
-        - IpProtocol: -1
-          FromPort: -1
-          ToPort: -1
       SecurityGroupEgress:
         - IpProtocol: -1           # Allows all outbound protocols
           FromPort: -1
           ToPort: -1
           CidrIp: 0.0.0.0/0        # Allows outbound traffic to any IPv4 address
-        - IpProtocol: -1
-          FromPort: -1
-          ToPort: -1
 
