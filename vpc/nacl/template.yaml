@@ -1,6 +1,9 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: Launch a simple EC2 for use with testing VPCs 
 Parameters: 
+  InstanceType:
+    Type: String
+    Default: t2.micro
   VpcID: 
     Type: String
     Default: vpc-03021246a87d745d4
@@ -14,6 +17,7 @@ Resources:
   MyEC2Instance: 
     Type: AWS::EC2::Instance
     Properties: 
+      InstanceType: !Ref InstanceType
       ImageId: !Ref ImageId    
       SubnetId: !Ref SubnetId
   SecurityGroupIds: 
