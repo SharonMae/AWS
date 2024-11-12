@@ -35,29 +35,6 @@ Resources:
     Properties:
       Roles:
         - !Ref SSMRole
-  MyEC2Instance: 
-    Type: AWS::EC2::Instance
-    Properties: 
-      IamInstanceProfile: !Ref EC2InstanceProfile
-      InstanceType: !Ref InstanceType
-      ImageId: !Ref ImageID    
-     # SubnetId: !Ref SubnetId
-     # SecurityGroupIds:
-     #  - !GetAtt SG.GroupId
-      NetworkInterfaces:
-      - DeviceIndex: 0
-        SubnetId: !Ref SubnetId
-        AssociatePublicIpAddress: true
-      GroupSet:
-      - !GetAtt SG.GroupId
-      DeleteOnTermination: true 
-       UserData: 
-        Fn::Base64: |
-          #!/bin/bash
-          sudo yum update -y
-          sudo yum install -y httpd
-          sudo systemctl start httpd
-          sudo systemctl enable httpd
   SG:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -73,5 +50,23 @@ Resources:
           FromPort: -1
           ToPort: -1
           CidrIp: 0.0.0.0/0        # Allows outbound traffic to any IPv4 address
-
-
+  MyEC2Instance: 
+    Type: AWS::EC2::Instance
+    Properties: 
+      IamInstanceProfile: !Ref EC2InstanceProfile
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref ImageID    
+      NetworkInterfaces:
+        - DeviceIndex: 0
+          SubnetId: !Ref SubnetId
+          AssociatePublicIpAddress: true
+      SecurityGroupIds:
+        - !Ref SG   # Corrected security group reference
+      DeleteOnTermination: true 
+      UserData: 
+        Fn::Base64: |
+          #!/bin/bash
+          sudo yum update -y
+          sudo yum install -y httpd
+          sudo systemctl start httpd
+          sudo systemctl enable httpd
