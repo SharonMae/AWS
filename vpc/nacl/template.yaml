@@ -1,40 +1,54 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Launch a simple EC2 for use with testing VPCs 
+Description: Launch a simple EC2 instance for use with testing in VPCs
+
 Parameters: 
   InstanceType:
     Type: String
     Default: t2.micro
+    Description: EC2 instance type
   VpcID: 
     Type: String
     Default: vpc-03021246a87d745d4
+    Description: VPC ID for the EC2 instance
   ImageID:
     Type: String
     Default: ami-0135d6e60c6532bf2
+    Description: AMI ID for the EC2 instance
   SubnetId:
     Type: String
     Default: subnet-042f03f3808250a9a
+    Description: Subnet ID for the EC2 instance
+
 Resources:
   MyEC2Instance: 
     Type: AWS::EC2::Instance
     Properties: 
       InstanceType: !Ref InstanceType
-      ImageId: !Ref ImageId    
+      ImageId: !Ref ImageID    
       SubnetId: !Ref SubnetId
-  SecurityGroupIds: 
-    - !GetAtt SG.GroupId 
-SG:
-  Type: AWS::EC2::SecurityGroup
-  Properties:
-    GroupDescription: Allow http to client host
-    VpcId: !Ref VpcID
-    SecurityGroupIngress:
-      - IpProtocol: -1
-        FromPort: -1
-        ToPort: -1
-        CidrIp: 0.0.0.0/0
-    SecurityGroupEgress:
-      - IpProtocol: -1
-        FromPort: -1
-        ToPort: -1
-        CidrIp: 0.0.0.0/0
-    
+      SecurityGroupIds: 
+        - !Ref SG
+
+  SG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow all traffic (for testing purposes)
+      VpcId: !Ref VpcID
+      SecurityGroupIngress:
+        - IpProtocol: -1           # Allows all inbound protocols
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 0.0.0.0/0        # Allows inbound traffic from any IPv4 address
+        - IpProtocol: -1
+          FromPort: -1
+          ToPort: -1
+          CidrIpv6: ::/0           # Allows inbound traffic from any IPv6 address
+      SecurityGroupEgress:
+        - IpProtocol: -1           # Allows all outbound protocols
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 0.0.0.0/0        # Allows outbound traffic to any IPv4 address
+        - IpProtocol: -1
+          FromPort: -1
+          ToPort: -1
+          CidrIpv6: ::/0           # Allows outbound traffic to any IPv6 address
