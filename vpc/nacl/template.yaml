@@ -20,7 +20,7 @@ Parameters:
     Description: Subnet ID for the EC2 instance
 
 Resources:
-  EC2InstanceRole:
+  SSMRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -37,6 +37,7 @@ Resources:
     Type: AWS::IAM::InstanceProfile
     Properties:
       Roles:
+        - !Ref SSMRole
         - !Ref EC2InstanceRole
 
   MyEC2Instance: 
