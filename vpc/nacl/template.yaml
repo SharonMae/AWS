@@ -1,9 +1,14 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: Launch a simple EC2 for use with testing VPCs 
 Parameters: 
+  VpcID: 
+    Type: String
+    Default: vpc-03021246a87d745d4
   ImageID:
+    Type: String
     Default: ami-0135d6e60c6532bf2
   SubnetId:
+    Type: String
     Default: subnet-042f03f3808250a9a
 Resources:
   MyEC2Instance: 
@@ -12,20 +17,20 @@ Resources:
       ImageId: !Ref ImageId    
       SubnetId: !Ref SubnetId
   SecurityGroupIds: 
-    - !Ref SG 
+    - !GetAtt SG.GroupId 
 SG:
   Type: AWS::EC2::SecurityGroup
   Properties:
     GroupDescription: Allow http to client host
-    VpcId: !Ref myVPC
+    VpcId: !Ref VpcID
     SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 80
-        ToPort: 80
+      - IpProtocol: -1
+        FromPort: -1
+        ToPort: -1
         CidrIp: 0.0.0.0/0
     SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: 80
-        ToPort: 80
+      - IpProtocol: -1
+        FromPort: -1
+        ToPort: -1
         CidrIp: 0.0.0.0/0
     
