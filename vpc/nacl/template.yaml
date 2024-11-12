@@ -38,7 +38,6 @@ Resources:
     Properties:
       Roles:
         - !Ref SSMRole
-        - !Ref EC2InstanceRole
 
   MyEC2Instance: 
     Type: AWS::EC2::Instance
