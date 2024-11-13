@@ -8,7 +8,7 @@ aws ec2 create-network-acl --vpc-id vpc-03021246a87d745d4
 
 ```sh
 aws ec2 create-network-acl-entry \
-    --network-acl-id acl-000a2911e558c33c4 \
+    --network-acl-id acl-0e2a8c4e2f85fd0cf \
     --ingress \
     --rule-number 90 \
     --protocol -1 \
