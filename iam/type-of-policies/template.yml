@@ -1,0 +1,46 @@
+Resources:
+  # AWS IAM User
+  MyUser: 
+    Type: 'AWS::IAM::User'
+    Properties: 
+      # UserName: 'my-shiny-user'
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+      Policies: 
+        - PolicyName: MyShinyPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: IamListAccess
+                Effect: Allow
+                Action:
+                  - 'iam:ListRoles'
+                  - 'iam:ListUsers'
+                Resource: '*'
+
+  # Inline policy attached to IAM user
+  MyInlinePolicies:
+    Type: 'AWS::IAM::Policy'
+    Properties:
+      PolicyName: MyInlinePolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action: 'ec2:*'
+            Resource: '*'
+      Users:
+        - !Ref MyUser
+
+  # Second inline policy directly attached to the IAM user
+  MySecondInlinePolicy:
+    Type: 'AWS::IAM::UserPolicy'
+    Properties:
+      PolicyName: MySecondInlinePolicy
+      UserName: !Ref MyUser
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action: 's3:*'
+            Resource: '*'
