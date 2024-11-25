@@ -2,7 +2,7 @@
 
 echo "== deploy ec2"
 
-STACK_NAME="aws-asg-ec2-basic"
+STACK_NAME="asg-basic"
 
 aws cloudformation deploy \
 --template-file template.yaml \
