@@ -1,5 +1,4 @@
-#!/usr/bin/env bash 
-
+#!/usr/bin/env bash
 sudo apt-get update
 sudo apt-get install -y wget apt-transport-https software-properties-common
 source /etc/os-release
@@ -10,4 +9,3 @@ sudo apt-get update
 sudo apt-get install -y powershell
 # pwsh
 # Install-Module -Name AWS.Tools.Installer
-# Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
