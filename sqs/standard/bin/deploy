@@ -4,8 +4,11 @@ echo "== deploy SQS Standard"
 
 STACK_NAME="sqs-standard"
 
+root_path=$(realpath .)
+template_path="${root_path}/template.yaml"
+
 aws cloudformation deploy \
---template-file ../template.yaml \
+--template-file $template_path \
 --capabilities CAPABILITY_NAMED_IAM \
 --no-execute-changeset \
 --region us-east-1 \
