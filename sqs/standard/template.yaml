@@ -3,5 +3,5 @@ Description: A simple SQS queue
 Resources: 
   MyQueue: 
     Type: AWS::SQS::Queue
-    Properties:
-      FifoQueue: true 
+    # Properties:
+      # FifoQueue: true 
