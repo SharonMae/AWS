@@ -4,7 +4,7 @@ echo "== send"
 root_path=$(realpath .)
 message_attributes_path="file://${root_path}/send-message.json"
 
-QUEUE_URL=https://sqs.us-east-1.amazonaws.com/976193260990/sqs-standard-MyQueue-Dupg0LMQXuA5
+QUEUE_URL=https://sqs.us-east-1.amazonaws.com/976193260990/sqs-standard-MyQueue-VYiHsyqsgYJd # endpoint 
 
 
 # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sqs/send-message.html

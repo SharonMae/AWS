@@ -4,7 +4,7 @@ echo "== receive"
 
 root_path=$(realpath .)
 
-QUEUE_URL=https://sqs.us-east-1.amazonaws.com/976193260990/sqs-standard-MyQueue-Dupg0LMQXuA5
+QUEUE_URL=https://sqs.us-east-1.amazonaws.com/976193260990/sqs-standard-MyQueue-VYiHsyqsgYJd # endpoint
 
 aws sqs receive-message \
 --queue-url $QUEUE_URL \
