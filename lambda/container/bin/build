@@ -5,6 +5,7 @@ set -e
 # because relative path was giving us trouble
 root_path=$(realpath .)
 template_path="${root_path}/template.yml"
+function_path="${root_path}/function"
 
 # sam build
 # ===================
@@ -16,4 +17,5 @@ template_path="${root_path}/template.yml"
 echo "== SAM build..."
 echo "using template: ${template_path}"
 sam build \
-  --template-file "${template_path}"
+  --template-file "${template_path}" \
+  --base-dir "${function_path}"
