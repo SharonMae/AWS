@@ -9,7 +9,7 @@ def handler(event, context):
     }
 
     # Convert into a JSON string
-    info_json = json.dumps(x)
+    info_json = json.dumps(info)
 
     # Print the JSON string
     print(info_json)

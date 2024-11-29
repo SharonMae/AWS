@@ -5,7 +5,7 @@ Resources:
   InlineLambda:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
+      Handler: function.handler
       Runtime: python3.12
       PackageType: Zip
       CodeUri: "./function/"
