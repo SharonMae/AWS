@@ -9,4 +9,4 @@ Resources:
       SamResourceId: InlineLambda
     Properties:
       PackageType: Image
-      ImageUri: inlinelambda:latest
+      ImageUri: 976193260990.dkr.ecr.us-east-1.amazonaws.com/python-container-example:inlinelambda-1d042c56b603-latest

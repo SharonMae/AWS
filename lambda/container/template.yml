@@ -5,10 +5,7 @@ Resources:
   InlineLambda:
     Type: AWS::Serverless::Function
     Metadata:
-        DockerContext: ./
+        DockerContext: "../"
         Dockerfile: Dockerfile 
     Properties:
       PackageType: Image
-      Handler: function.handler
-      Runtime: python3.12
-      CodeUri: "./function/"
