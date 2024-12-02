@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+aws s3 rm  s3://sf-shine-diamond-3587/inputs/info.jpg --region us-east-1 
+aws s3 cp info.jpg s3://sf-shine-diamond-3587/inputs/info.jpg --region us-east-1 
