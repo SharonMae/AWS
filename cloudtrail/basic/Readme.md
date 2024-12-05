@@ -4,7 +4,7 @@ aws s3 mb s3://my-cloudtrail-og-2030
 
 # Create bucket policy to allow cloud trail to put to bucket 
 
-aws s3api put-bucket-policy --bucket MyBucket --policy file://policy.json
+aws s3api put-bucket-policy --bucket my-cloudtrail-og-2030 --policy file://bucket-policy.json
 
 # Create Trail 
 
