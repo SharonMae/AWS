@@ -13,3 +13,6 @@ aws cloudtrail create-trail \
 --s3-bucket-name my-cloudtrail-og-2030 \
 --region us-east-1
 
+# Start Logging 
+
+aws cloudtrail start-logging --name MyTrail
