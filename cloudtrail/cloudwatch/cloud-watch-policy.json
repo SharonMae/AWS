@@ -9,7 +9,7 @@
           "logs:CreateLogStream"
         ],
         "Resource": [
-          "arn:aws:logs:us-east-1:976193260990:log-group:mycloudtrail:log-stream:main"
+          "arn:aws:logs:us-east-1:976193260990:log-group:mycloudtrail:log-stream:*"
         ]
   
       },
@@ -20,7 +20,7 @@
           "logs:PutLogEvents"
         ],
         "Resource": [
-          "arn:aws:logs:us-east-1:976193260990:log-group:mycloudtrail:log-stream:main"
+          "arn:aws:logs:us-east-1:976193260990:log-group:mycloudtrail:log-stream:*"
         ]
       }
     ]
