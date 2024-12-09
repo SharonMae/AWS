@@ -23,5 +23,14 @@ aws kendra create-data-source \
 
 aws kendra start-data-source-sync-job \
 --id 26972c4d-b3aa-4ae5-94b0-f08c759ad685 \
---index-id 1d5a90ff-be31-4eca-b7ce-3a850599b800
+--index-id 1d5a90ff-be31-4eca-b7ce-3a850599b800 \
+--region us-east-1 
 
+# Query
+
+```sh
+aws kendra query \
+--index-id 1d5a90ff-be31-4eca-b7ce-3a850599b800 \
+--query-text "What characters are in the book Oliver Twist?" \
+--region us-east-1
+```
