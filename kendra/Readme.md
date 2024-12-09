@@ -13,7 +13,8 @@ aws kendra create-index \
 
 aws kendra create-data-source \
 --index-id 1d5a90ff-be31-4eca-b7ce-3a850599b800 \
---name my-data-source\
---role-arn \
+--name my-data-source \
+--role-arn arn:aws:iam::976193260990:role/KendraDataSourceRole \
 --type S3 \
---configuration '{"S3Configuration:{"BucketName": ""}"}'
+--configuration '{"S3Configuration": {"BucketName": "kendra-exp-667"}}' 
+
