@@ -1,4 +1,4 @@
-aws kendra create-index 
---name my-index
---descriptiom "My Index"
---role-arn arn:aws:iam 
+aws kendra create-index \
+--name my-index \
+--description "My Index" \
+--role-arn arn:aws:iam::976193260990:role/KendraIndexRole
