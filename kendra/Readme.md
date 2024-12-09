@@ -12,8 +12,8 @@ aws kendra create-index \
 # Creating our Data Source 
 
 aws kendra create-data-source \
---index-id \
---name \
+--index-id 1d5a90ff-be31-4eca-b7ce-3a850599b800 \
+--name my-data-source\
 --role-arn \
---type S# \
+--type S3 \
 --configuration '{"S3Configuration:{"BucketName": ""}"}'
