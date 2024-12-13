@@ -1,6 +1,6 @@
 require 'aws-sdk-textract'
 
-client = Aws::Textract::Client.new
+client = Aws::Textract::Client.new region 'us-east-1'
 bucket = 'textract-exp-4565'
 name = 'tax-doc.png'
 resp = client.analyze_document({
