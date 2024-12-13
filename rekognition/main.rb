@@ -2,7 +2,7 @@
    # gem 'aws-sdk-rekognition'
    bucket = 'rekog-og-4050' # the bucket name without s3://
    photo  = 'sasha.jpg' # the name of file
-   client   = Aws::Rekognition::Client.new
+   client   = Aws::Rekognition::Client.new region: 'us-east-1'
    attrs = {
      image: {
        s3_object: {
