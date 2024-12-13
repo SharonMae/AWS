@@ -1,7 +1,7 @@
 # Add to your Gemfile
    # gem 'aws-sdk-rekognition'
-   bucket = 'bucket' # the bucket name without s3://
-   photo  = 'photo' # the name of file
+   bucket = 'rekog-og-4050' # the bucket name without s3://
+   photo  = 'sasha.jpg' # the name of file
    client   = Aws::Rekognition::Client.new
    attrs = {
      image: {
