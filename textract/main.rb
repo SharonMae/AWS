@@ -1,4 +1,5 @@
 require 'aws-sdk-textract'
+require 'pry'
 
 client = Aws::Textract::Client.new region 'us-east-1'
 bucket = 'textract-exp-4565'
