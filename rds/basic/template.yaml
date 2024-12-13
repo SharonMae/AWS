@@ -42,9 +42,6 @@ Parameters:
   Subnets:
     Type: 'List<AWS::EC2::Subnet::Id>'
     Description: A list of subnets for the Auto Scaling group    
-    Default: "subnet-0ef3f017ef5731881,subnet-01582fe4a8c486116"
-    # us-east-1a 
-    # us-east-1b
 Resources:
   RDSPostgresSG:
     Type: AWS::EC2::SecurityGroup
