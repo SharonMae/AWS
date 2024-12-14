@@ -9,7 +9,7 @@ aws cloudformation deploy \
 --template-file template.yaml \
 --capabilities CAPABILITY_NAMED_IAM \
 --no-execute-changeset \
---parameter-overrides VpcId="vpc-0649b27e673eac2e0" WebServerSGGroupId="sg-02b6c70995610d1f4" RdsSecretArn="arn:aws:secretsmanager:us-east-1:976193260990:secret:MyRdsPassword-AEfa3j" Username="sharonmae" Subnets="subnet-0ef3f017ef5731881,subnet-01582fe4a8c486116,subnet-0e14032fbd9666370"
+--parameter-overrides VpcId="vpc-0649b27e673eac2e0" WebServerSGGroupId="sg-02b6c70995610d1f4" RdsSecretArn="arn:aws:secretsmanager:us-east-1:976193260990:secret:MyRdsPassword-AEfa3j" Username="sharonmae" Subnets="subnet-0ef3f017ef5731881,subnet-01582fe4a8c486116,subnet-0e14032fbd9666370" \
 --region us-east-1 \
 --stack-name $STACK_NAME
 
